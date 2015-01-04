@@ -19,8 +19,9 @@ RUN yum install -y httpd \
 RUN mkdir -p /var/www/html/centos/6.5 \
  && wget http://mirror.simwood.com/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso \
  && osirrox -indev /tmp/CentOS-6.5-x86_64-minimal.iso -extract /Packages /var/www/html/centos/6.5/ \
- && cd /var/www/html/centos/ \
+ && pushd /var/www/html/centos/ \
  && createrepo . \
+ && popd \
  && rm CentOS-6.5-x86_64-minimal.iso \
  && rm /etc/httpd/conf.d/welcome.conf
 
